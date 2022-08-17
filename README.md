@@ -39,7 +39,7 @@
 
 Demo视频如下：
 
-[![Watch the video](https://gitee.com/kevin17/aid-lux-smart-assistant/tree/master/pic/videobutton.jpg)](DemoWithoutUserSound.mp4)
+[![Watch the video](pic/videobutton.jpg)](DemoWithoutUserSound.mp4)
 
 
 ## 1. 智能音箱的组成
@@ -74,7 +74,7 @@ e. 这时说话的内容就会出现在输入框了
 
 数据流示意图：
 
-<a href="url"><img src="https://gitee.com/kevin17/aid-lux-smart-assistant/tree/master/pic/%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg" width="400" ></a>
+<a href="url"><img src="pic/%E6%95%B0%E6%8D%AE%E6%B5%81%E7%A4%BA%E6%84%8F%E5%9B%BE.jpg" width="400" ></a>
 
 
 ### 2.1 前端 frontend.py
@@ -305,8 +305,8 @@ nerUrl="云函数路径"#修改回你自己的
 
 以讯飞输入法v11.1.6为例，设置使用语音输入，选择语音输入中的“长语音输入”。进入到语音设置中的选项如下,另可尝试体验一下方言，有粤语等：
 
-<a href="url"><img src="https://gitee.com/kevin17/aid-lux-smart-assistant/tree/master/pic/4d4af7194298f70a37f9637adf80c66.jpg" width="300" ></a>
-<a href="url"><img src="https://gitee.com/kevin17/aid-lux-smart-assistant/tree/master/pic/811329f03062292698b6a661c756d75.jpg" width="300" ></a>
+<a href="url"><img src="pic/4d4af7194298f70a37f9637adf80c66.jpg" width="300" ></a>
+<a href="url"><img src="pic/811329f03062292698b6a661c756d75.jpg" width="300" ></a>
 
 ### 4.2 Aidlux中设置
 
@@ -337,11 +337,11 @@ nerUrl="云函数路径"#修改回你自己的
 
 5.3 点击启动页面中的输入框，待弹出输入键盘后，选择语音输入
 
-<a href="url"><img src="https://gitee.com/kevin17/aid-lux-smart-assistant/tree/master/pic/1660296182995.png" width="220" ></a>
+<a href="url"><img src="pic/1660296182995.png" width="220" ></a>
 
 5.4 可以愉快地开始语音玩耍了
 
-<a href="url"><img src="https://gitee.com/kevin17/aid-lux-smart-assistant/tree/master/pic/6a9372ef34a88ab4d8f3e2ac5871dfb.jpg" width="220" ></a>
+<a href="url"><img src="pic/6a9372ef34a88ab4d8f3e2ac5871dfb.jpg" width="220" ></a>
 
 ## 6. 不足
 
