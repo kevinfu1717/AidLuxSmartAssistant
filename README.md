@@ -37,36 +37,48 @@
 项目代码github地址：https://github.com/kevinfu1717/AidLuxSmartAssistant
 
 
-B站视频如下：
+Demo视频如下：
 
-(<iframe src="//player.bilibili.com/player.html?aid=644531450&bvid=BV16Y4y1c7iU&cid=806231718&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>)
+[![Watch the video](pic/videobutton.jpg)](DemoWithoutUserSound.mp4)
 
+<iframe src="//player.bilibili.com/player.html?aid=644531450&bvid=BV16Y4y1c7iU&cid=806231718&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-## 1. 智能音箱的组成
+## 1. 智能音箱方案
 
-智能音箱的组成需要：1.语音采集麦克风，2.语音播报喇叭，3.运算单元，4.语音识别系统，5.中控系统，6.后台服务，7.语音播报系统。
+下列表格列车智能音箱的主要部分，及本方案所用的程序或系统
+
+| 序号|  智能音箱的组成  | 本方案的系统  |
+|  ---- |  ----  | ----  |
+|  1  | 语音识别系统  | 安卓语音输入法 |
+|  2 | 收音硬件  | 安卓手机麦克风（或外接会议麦克风） |
+|  3| 语音播报硬件  | 安卓手机喇叭（或外接会议麦克风喇叭） |
+|  4| 运算单元  | 安卓手机|
+|  5| 中控系统  | 跑在Aidlux中的python程序frontend.py 与 backend.py |
+|  6| 后台服务  | 跑在Aidlux中的python程序frontend.py 与 backend.py|
+|  7| 语音播报系统  | 调用安卓系统的TTS命令`droid.ttsSpeak(content)` 或 各大厂的语音合成接口 或开源语音合成 |
+
+*注：
+ - 麦克风想要更灵敏可以另外在网上购买会议用的拾音器或超灵敏麦克风。但其实手机本身的麦克风收音感觉还是可以的，我用iqoo的在同一房间内还不错的，但需要处理会把语音播报的声音也收进来的问题（后续有介绍如何用代码处理这部分）
  
- - 其中，"1 语音采集麦克风"，"2 语音播报喇叭" 利用安卓手机的麦克风与外放喇叭。麦克风想要更灵敏可以另外在网上购买会议用的拾音器或超灵敏麦克风。但其实手机本身的麦克风收音感觉还是可以的，我用iqoo的在同一房间内还不错的，但需要处理会把语音播报的声音也收进来的问题（后续有介绍如何用代码处理这部分）
- - 而 "3 运算单元"就是使用安卓手机来运算。
- - 对于"4 语音识别系统" 当然可以自己用开源算法改一个，但效果可想而知。这里我们使用各家大厂的安卓语音输入法作为语音输入系统。步骤如下：
- 
-> 利用安卓输入法，白嫖各大厂的语音识别作为我们智能音箱的语音识别
-
-a. 给手机装上安卓手机输入法作为语音输入系统，本人测试过百度输入法、搜狗输入法、讯飞输入法。个人感觉讯飞会识别准确度高一些，下面介绍用讯飞的方法。你也可以尝试百度或搜狗等语音识别。
-
-b. 启动aidlux，并启动linux系统中编辑好的pywebio应用，点击输入框。这时会弹出安卓输入键盘。
-
-c. 选择输入键盘中的语音输入
-
-d. 讯飞的语音输入设置参考4.1中输入法设置
-
-e. 这时说话的内容就会出现在输入框了
-    
-
-    
  - 其中的"5 中控系统"，"6 后台服务"，分别对应代码中的 frontend.py 与 backend.py, 后端也可以放在云函数上运行。我这里做的功能是个语音输入内容记录到飞书表格中
  
  - 对于"7 语音播报系统"，为了简单快捷，我使用了aidlux提供的调用安卓默认的语音，代码是 `droid.ttsSpeak(content)`，你用中意的语音也可以调用腾讯云、阿里云等语音合成服务来播报。
+ 
+ - 对于"1 语音识别系统" 当然可以自己用开源算法改一个，但效果可想而知。这里我们使用各家大厂的安卓语音输入法作为语音输入系统。步骤如下：
+ 
+> 在开启Aidlux后，在Aidlux程序框中调出安卓输入法，白嫖各大厂的语音识别作为我们智能音箱的语音识别
+
+    a. 给手机装上安卓手机输入法作为语音输入系统，本人测试过百度输入法、搜狗输入法、讯飞输入法。个人感觉讯飞会识别准确度高一些，下面介绍用讯飞的方法。你也可以尝试百度或搜狗等语音识别。
+    
+    b. 启动Aidlux，并启动linux系统中编辑好的pywebio应用，点击输入框。这时会弹出安卓输入键盘。
+    
+    c. 选择输入键盘中的语音输入
+    
+    d. 讯飞的语音输入设置参考4.1中输入法设置
+    
+    e. 这时说话的内容就会出现在输入框了
+    
+
  
  ## 2.代码介绍
  
@@ -128,8 +140,8 @@ e. 这时说话的内容就会出现在输入框了
 a. 概述：使用生产者消费者模式，使用python的多线程，线程间通讯用Queue。
 
 b. backend.py中主函数
-
 ```
+
 def main(port):
     port=int(port)
     # args.port=port
@@ -161,10 +173,7 @@ def main(port):
     cm.join()
 
 ```
-
-
 c. moduleInput中过滤出最新说话的内容newMsg，self.allData为整个文本框内容：
-
 
 ```
     def chiefProcess(self, data):
@@ -185,7 +194,6 @@ c. moduleInput中过滤出最新说话的内容newMsg，self.allData为整个文
 ```
 
 d.moduleNer中的jioNLP的日期、时间提取：
-
 
 ```
     def localParseTime(self,text):
@@ -208,10 +216,8 @@ d.moduleNer中的jioNLP的日期、时间提取：
 
         return time1,time2
 ```
-
 d. moduleOutput中控制语音播报speak与安卓toast弹出文字提示，这里翻查了Aidlux文档找到相关的api。
 > 需注意在非双工状态下（即麦克风采音无法滤去本身设备播报的声音，duplex=False ），处理模块会忽略掉系统播放的语音又被录入回系统的那一段语句。
-
 
 ```
 class outputManager():
@@ -253,7 +259,6 @@ class outputManager():
             self.print('toast fail'+str(content)+str(e))
             pass
 ```
-
 e. 当到语音触发动作这步时，会调起feishuTool.py记录到飞书多维表格中。
 其中，把所有需调用的相关账户信息都配置到header.py中
 
