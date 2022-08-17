@@ -37,9 +37,9 @@
 项目代码github地址：https://github.com/kevinfu1717/AidLuxSmartAssistant
 
 
-Demo视频如下：
+B站视频如下：
 
-[![Watch the video](pic/videobutton.jpg)](DemoWithoutUserSound.mp4)
+(<iframe src="//player.bilibili.com/player.html?aid=644531450&bvid=BV16Y4y1c7iU&cid=806231718&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>)
 
 
 ## 1. 智能音箱的组成
